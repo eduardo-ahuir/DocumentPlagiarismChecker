@@ -21,20 +21,20 @@ namespace DocumentPlagiarismChecker.Comparators.DocumentWordCounter
     internal class Comparator: Core.BaseComparator<Document>
     {  
         /// <summary>
-        /// Crea una nueva instanciad e la clase comparator.
+        /// Creates a new instance for the Comparator.
         /// </summary>
-        /// <param name="fileLeftPath">La ruta de ficheros del lado izquierdo.</param>
-        /// <param name="fileRightPath">La ruta de ficheros del lado derecho.</param>
-        /// <param name="settings">Los ajustede la nueva instancia del comparador</param>
+        /// <param name="fileLeftPath">The left side file's path.</param>
+        /// <param name="fileRightPath">The right side file's path.</param>
+        /// <param name="settings">The settings instance that will use the comparator.</param>
         /// <returns></returns>
         public Comparator(string fileLeftPath, string fileRightPath, Settings settings): base(fileLeftPath, fileRightPath, settings){
         }  
         
         /// <summary>
-        /// Cuenta cuántas palabras y cuántas veces aparecen en cada documento y comprueba el porcentaje de coincidencia.
+        /// Counts how many words and how many times appears within each document, and checks the matching percentage.
         /// </summary>
-        /// <returns>Los resultados de la coincidencia.</returns>
-    public override ComparatorMatchingScore Run(){
+        /// <returns>The matching's results.</returns>
+        public override ComparatorMatchingScore Run(){
             //Counting the words appearences for each document (left and right).
             Dictionary<string, int[]> counter = new Dictionary<string, int[]>();
             foreach(string word in this.Left.WordAppearances.Select(x => x.Key)){
