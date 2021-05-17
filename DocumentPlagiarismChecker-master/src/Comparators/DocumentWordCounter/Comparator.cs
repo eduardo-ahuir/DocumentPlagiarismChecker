@@ -31,11 +31,11 @@ namespace DocumentPlagiarismChecker.Comparators.DocumentWordCounter
         }  
         
         /// <summary>
-        /// Counts how many words and how many times appears within each document, and checks the matching percentage.
+        /// Cuenta cuántas palabras y cuántas veces aparecen en cada documento y comprueba el porcentaje de coincidencia.
         /// </summary>
         /// <returns>The matching's results.</returns>
         public override ComparatorMatchingScore Run(){
-            //Counting the words appearences for each document (left and right).
+            //contar las palabras que aparecen por el texto (ixquierda y derceha).
             Dictionary<string, int[]> counter = new Dictionary<string, int[]>();
             foreach(string word in this.Left.WordAppearances.Select(x => x.Key)){
                 if(!counter.ContainsKey(word)) counter.Add(word, new int[]{0, 0});
@@ -47,7 +47,7 @@ namespace DocumentPlagiarismChecker.Comparators.DocumentWordCounter
                 counter[word][1] += Right.WordAppearances[word];
             }
 
-            //Counting sample file word appearences, in order to ignore those from the previous files.
+            //Contar las apariciones de las palabras del archivo de muestra, para ignorar las de los archivos anteriores.
             if(this.Sample != null){
                  foreach(string word in this.Sample.WordAppearances.Select(x => x.Key)){
                     if(counter.ContainsKey(word)){
